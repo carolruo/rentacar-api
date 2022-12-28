@@ -15,6 +15,9 @@ public class Customer {
     @NotBlank
     private String name;
 
+    @NotNull
+    private Integer cpf;
+
     @Column(unique = true)
     private String phoneNumber;
 
@@ -26,6 +29,17 @@ public class Customer {
     @NotNull
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
+
+    protected Customer() {
+    }
+
+    public Customer(String name, Integer cpf, String phoneNumber, String email, Address address) {
+        this.name = name;
+        this.cpf = cpf;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+    }
 
     public Long getId() {
         return id;
