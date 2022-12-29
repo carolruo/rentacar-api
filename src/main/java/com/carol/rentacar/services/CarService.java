@@ -1,7 +1,9 @@
 package com.carol.rentacar.services;
 
+import com.carol.rentacar.exceptions.DuplicateObjectException;
 import com.carol.rentacar.exceptions.ObjectNotFoundException;
 import com.carol.rentacar.models.Car;
+import com.carol.rentacar.models.enums.CarStatus;
 import com.carol.rentacar.repositories.CarRepository;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,13 @@ public class CarService {
     }
 
     public void save(Car car) {
+        if (car.getStatus() == null) {
+            car.setStatus(CarStatus.AVAILABLE);
+        }
+
+        if (carRepository.findByPlate(car.getPlate()).isPresent()) {
+            throw new DuplicateObjectException("Carro com essa placa já cadastrado. Placa: " + car.getPlate());
+        }
         carRepository.save(car);
     }
 

@@ -24,7 +24,6 @@ public class Car {
     @NotBlank
     private String plate;
 
-    @NotNull
     private CarStatus status;
 
     protected Car() {
