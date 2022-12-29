@@ -68,7 +68,7 @@ public class Address {
         return postalCode;
     }
 
-    public void setClient(Customer customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 }
