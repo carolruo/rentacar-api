@@ -16,7 +16,7 @@ public class Customer {
     private String name;
 
     @NotNull
-    private Integer cpf;
+    private String cpf;
 
     @Column(unique = true)
     private String phoneNumber;
@@ -33,7 +33,7 @@ public class Customer {
     protected Customer() {
     }
 
-    public Customer(String name, Integer cpf, String phoneNumber, String email, Address address) {
+    public Customer(String name, String cpf, String phoneNumber, String email, Address address) {
         this.name = name;
         this.cpf = cpf;
         this.phoneNumber = phoneNumber;
@@ -53,11 +53,11 @@ public class Customer {
         this.name = name;
     }
 
-    public Integer getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Integer cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

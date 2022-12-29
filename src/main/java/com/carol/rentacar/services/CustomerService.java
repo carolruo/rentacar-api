@@ -1,5 +1,6 @@
 package com.carol.rentacar.services;
 
+import com.carol.rentacar.exceptions.DuplicateObjectException;
 import com.carol.rentacar.exceptions.ObjectNotFoundException;
 import com.carol.rentacar.models.Customer;
 import com.carol.rentacar.repositories.CustomerRepository;
@@ -25,8 +26,29 @@ public class CustomerService {
     }
 
     public void save(Customer customer) {
+        validateEmail(customer);
+        validatePhoneNumber(customer);
+        validateCpf(customer);
         customer.getAddress().setCustomer(customer);
         customerRepository.save(customer);
+    }
+
+    private void validateCpf(Customer customer) {
+        if (customerRepository.findByCpf(customer.getCpf()).isPresent()) {
+            throw new DuplicateObjectException("Cliente com esse CPF já cadastrado");
+        }
+    }
+
+    private void validatePhoneNumber(Customer customer) {
+        if (customerRepository.findByPhoneNumber(customer.getPhoneNumber()).isPresent()) {
+            throw new DuplicateObjectException("Cliente com esse telefone já cadastrado");
+        }
+    }
+
+    private void validateEmail(Customer customer) {
+        if (customerRepository.findByEmail(customer.getEmail()).isPresent()) {
+            throw new DuplicateObjectException("Cliente com esse e-mail já cadastrado");
+        }
     }
 
     public Customer update(Customer updatedCustomer, Long id) {
