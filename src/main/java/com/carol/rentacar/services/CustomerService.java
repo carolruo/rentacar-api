@@ -1,7 +1,6 @@
 package com.carol.rentacar.services;
 
 import com.carol.rentacar.exceptions.ObjectNotFoundException;
-import com.carol.rentacar.models.Car;
 import com.carol.rentacar.models.Customer;
 import com.carol.rentacar.repositories.CustomerRepository;
 import org.springframework.stereotype.Service;
@@ -12,7 +11,6 @@ import java.util.List;
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
-
 
     public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
