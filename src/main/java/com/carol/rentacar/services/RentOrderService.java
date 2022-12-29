@@ -9,7 +9,6 @@ import com.carol.rentacar.models.RentOrder;
 import com.carol.rentacar.models.enums.RentStatus;
 import com.carol.rentacar.repositories.RentOrderRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
