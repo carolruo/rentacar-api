@@ -41,6 +41,12 @@ public class RentOrder {
         this.status = RentStatus.ACTIVE;
     }
 
+    public RentOrder(Customer customer, Car car, RentStatus status) {
+        this.customer = customer;
+        this.car = car;
+        this.status = status;
+    }
+
     public Long getId() {
         return id;
     }

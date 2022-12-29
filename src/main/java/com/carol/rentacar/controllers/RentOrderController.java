@@ -43,7 +43,7 @@ public class RentOrderController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    ResponseEntity<RentOrder> update(@PathVariable("id") Long id, @RequestBody @Valid RentOrder updatedRent) {
+    ResponseEntity<RentOrder> update(@PathVariable("id") Long id, @RequestBody @Valid RentOrderRequest updatedRent) {
         RentOrder rentOrder = rentService.update(updatedRent, id);
         return ResponseEntity.ok().body(rentOrder);
     }
